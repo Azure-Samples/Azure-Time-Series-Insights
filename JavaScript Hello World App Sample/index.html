@@ -1,0 +1,112 @@
+<html><head>
+        <title>Time Series Insights Hello World Sample</title>
+        <meta charset="utf-8">
+        <style type="text/css">body { font-family: "Segoe UI", sans-serif; padding: 3em; }</style>
+        <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.11/js/adal.min.js"></script>
+    </head>
+    <body>
+        <p>
+            Time Series Insights "Hello World" Sample
+        </p>
+        <p>
+            <a href="#" onclick="authContext.login(); return false;">Log in</a> |
+            <a href="#" onclick="authContext.logOut(); return false;">Log out</a>
+        </p>
+        <p id="username"></p>
+        <pre id="api_response"></pre>
+        
+        <div>Aggregates API result...</div>
+        <div id="sampleAggregates"></div>
+        
+        <script type="text/javascript">
+            
+            // START: AUTHENTICATION RELATED CODE USING ADAL.JS
+                // Set up ADAL
+                var authContext = new AuthenticationContext({
+                    clientId: '#PLACEHOLDER#',
+                    postLogoutRedirectUri: '#PLACEHOLDER#'
+                });
+                
+                if (authContext.isCallback(window.location.hash)) {
+                
+                    // Handle redirect after token requests
+                    authContext.handleWindowCallback();
+                    var err = authContext.getLoginError();
+                    if (err) {
+                        // TODO: Handle errors signing in and getting tokens
+                        document.getElementById('api_response').textContent =
+                            'ERROR:\n\n' + err;
+                    }
+                
+                } else {
+                
+                    var user = authContext.getCachedUser();
+                    if (user) {
+                
+                        document.getElementById('username').textContent = 'Signed in as: ' + user.userName;
+                        
+                    } else {
+                        document.getElementById('username').textContent = 'Not signed in.';
+                    }
+                }
+                
+                authContext.getTsiToken = function(){
+                    document.getElementById('api_response').textContent = 'Getting tsi token...';
+                    
+                    // Get an access token to the Microsoft TSI API
+                    var promise = new Promise(function(resolve,reject){
+                        authContext.acquireToken(
+                        'https://api.timeseries.azure.com/',
+                        function (error, token) {
+                
+                            if (error || !token) {
+                                // TODO: Handle error obtaining access token
+                                document.getElementById('api_response').textContent =
+                                    'ERROR:\n\n' + error;
+                                return;
+                            }
+                
+                            // Use the access token
+                            document.getElementById('api_response').textContent = '';
+                            resolve(token);
+                            }
+                        );
+                    });
+                    
+                    return promise;
+                }
+            // END: AUTHENTICATION RELATED CODE USING ADAL.JS
+            
+            
+            // START: BASIC TSI AGGREGATES EXAMPLE
+            authContext.getTsiToken().then(function(token){
+                var webSocket = new WebSocket("wss://10000000-0000-0000-0000-100000000108.env.timeseries.azure.com/aggregates?api-version=2016-12-12");
+                
+                webSocket.onmessage = function(e) {
+                    var message = JSON.parse(e.data ? e.data : false);
+
+                    if (message.content && message.content.length) {
+                        document.getElementById('sampleAggregates').innerHTML = JSON.stringify(message.content[0]); 
+                    }
+                }
+                
+                webSocket.onopen = function(){
+                    var messageObject = {};
+                    messageObject['headers'] = {'Authorization': 'Bearer ' + token};
+                    var contentObject = {predicate: {predicateString: ''}, 
+                                        searchSpan: {from: "2017-04-30T23:00:00.000Z", to:"2017-05-01T00:00:00.000Z"}, 
+                                        aggregates: [
+                                            {dimension: 
+                                                {dateHistogram: {input: {builtInProperty: "$ts"}, breaks:{size: "1m"}}}, 
+                                                measures: [{count: {}}]}
+                                            ]
+                                        };
+                    messageObject['content'] = contentObject;
+                    webSocket.send(JSON.stringify(messageObject));
+                }		
+            });
+            // END: BASIC TSI AGGREGATES EXAMPLE
+                
+        </script>
+</body>
+</html>
