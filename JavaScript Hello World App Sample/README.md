@@ -41,5 +41,5 @@ This article explains how to configure a custom application that calls the Azure
  
 ## See also
 
-* [Query API](/rest/api/time-series-insights/time-series-insights-reference-queryapi) for the full Query API reference
+* [Query API](https://docs.microsoft.com/en-us/rest/api/time-series-insights/ga-query) for the full Query API reference
 * [Create a service principal in the Azure portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
