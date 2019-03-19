@@ -19,4 +19,4 @@ The sample shows several basic examples of Query API usage:
 
 ## Next steps
 
-For the full Query API reference, see the [Query API](/rest/api/time-series-insights/time-series-insights-reference-queryapi) document.
+For the full Query API reference, see the [Query API](https://docs.microsoft.com/en-us/rest/api/time-series-insights/ga-query) document.
