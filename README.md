@@ -4,10 +4,10 @@ These are samples that use the [Azure Time Series Insights](https://azure.com/ts
 ## Samples
 
 ### TSI Preview
-* [C# Sample App](c-sharp-tsi-preview-sample)
+* [C# Sample App](csharp-tsi-preview-sample)
 
 ### TSI GA
-* [C# Sample App](c-sharp-tsi-ga-sample)
+* [C# Sample App](csharp-tsi-ga-sample)
 * [Javascript Sample App](javascript-tsi-ga-sample)
 
 
