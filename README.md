@@ -1,28 +1,22 @@
 # Azure Time Series Insights Samples
-These samples are intended to be used as a template to using TSI APIs
+These are samples that use the [Azure Time Series Insights](https://azure.com/tsi) data plane APIs.
 
-## Features
+## Samples
 
-This project framework provides the following features:
+### TSI Preview
+* [C# Sample App](csharp-tsi-preview-sample)
 
-* C# Hello World App
-* JS Hello World App
+### TSI GA
+* [C# Sample App](csharp-tsi-ga-sample)
+* [Javascript Sample App](javascript-tsi-ga-sample)
 
 
 ## Getting Started
 To get started, refer to the README.md and this documentation: https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization
-### Prerequisites
 
-### Installation
+## Documentation
 
-
-### Quickstart
-
-
-
-## Demo
-
-
+https://docs.microsoft.com/en-us/azure/time-series-insights/
 
 ## Resources
 
