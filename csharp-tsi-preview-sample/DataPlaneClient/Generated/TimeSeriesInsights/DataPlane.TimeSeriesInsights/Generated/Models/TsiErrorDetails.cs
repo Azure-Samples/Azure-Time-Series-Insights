@@ -36,7 +36,7 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// <param name="code">Language-independent, human-readable string that
         /// defines a service-specific error code. This code serves as a more
         /// specific indicator for the HTTP error code specified in the
-        /// response. Can be used to programatically handle specific error
+        /// response. Can be used to programmatically handle specific error
         /// cases.</param>
         /// <param name="message">Human-readable, language-independent
         /// representation of the error. It is intended as an aid to developers
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// Gets language-independent, human-readable string that defines a
         /// service-specific error code. This code serves as a more specific
         /// indicator for the HTTP error code specified in the response. Can be
-        /// used to programatically handle specific error cases.
+        /// used to programmatically handle specific error cases.
         /// </summary>
         [JsonProperty(PropertyName = "code")]
         public string Code { get; private set; }
