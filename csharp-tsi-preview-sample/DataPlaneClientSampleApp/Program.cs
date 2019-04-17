@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using DateTimeRange = Microsoft.Azure.TimeSeriesInsights.Models.DateTimeRange;
 
-namespace DataPlaneClientSampleApp
+namespace DataPlaneSampleApp
 {
     public sealed class Program
     {
@@ -89,12 +89,13 @@ namespace DataPlaneClientSampleApp
             [2] = new Operation("Query/AggregateSeries", RunAggregateSeriesAsync),
             [3] = new Operation("Query/GetSeries", RunGetSeriesAsync),
             [4] = new Operation("Query/GetEvents", RunGetEventsAsync),
-            [5] = new Operation("GetInstances", RunGetInstancesAsync),
-            [6] = new Operation("InstancesBatch", RunInstancesBatchAsync),
-            [7] = new Operation("GetTypes", RunGetTypesAsync),
-            [8] = new Operation("TypesBatch", RunTypesBatchAsync),
-            [9] = new Operation("GetHierarchies", RunGetHierarchiesAsync),
-            [10] = new Operation("HierarchiesBatch", RunHierarchiesBatchAsync),
+            [5] = new Operation("Query/GetEventsWithProjectedProperties", RunGetEventsWithProjectedPropertiesAsync),
+            [6] = new Operation("GetInstances", RunGetInstancesAsync),
+            [7] = new Operation("InstancesBatch", RunInstancesBatchAsync),
+            [8] = new Operation("GetTypes", RunGetTypesAsync),
+            [9] = new Operation("TypesBatch", RunTypesBatchAsync),
+            [10] = new Operation("GetHierarchies", RunGetHierarchiesAsync),
+            [11] = new Operation("HierarchiesBatch", RunHierarchiesBatchAsync),
         };
 
         private static async Task RunHierarchiesBatchAsync()
@@ -333,6 +334,26 @@ namespace DataPlaneClientSampleApp
                             timeSeriesId: TimeSeriesId,
                             searchSpan: SearchSpan,
                             filter: null)));
+
+                PrintResponse(queryResponse);
+
+                continuationToken = queryResponse.ContinuationToken;
+            }
+            while (continuationToken != null);
+        }
+
+        private static async Task RunGetEventsWithProjectedPropertiesAsync()
+        {
+            string continuationToken;
+            do
+            {
+                QueryResultPage queryResponse = await _client.ExecuteQueryPagedAsync(
+                    new QueryRequest(
+                        getEvents: new GetEvents(
+                            timeSeriesId: TimeSeriesId,
+                            searchSpan: SearchSpan,
+                            filter: null,
+                            projectedProperties: new List<EventProperty>() { new EventProperty("data", PropertyTypes.Double) })));
 
                 PrintResponse(queryResponse);
 
