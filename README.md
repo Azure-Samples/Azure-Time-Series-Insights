@@ -2,10 +2,10 @@
 page_type: sample
 languages:
 - csharp
-- javascript
 products:
 - azure
-- time-series-insights
+description: "These are samples that use the Azure Time Series Insights data plane APIs."
+urlFragment: Azure-Time-Series-Insights
 ---
 
 # Azure Time Series Insights Samples
