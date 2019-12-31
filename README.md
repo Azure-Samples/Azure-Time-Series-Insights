@@ -10,6 +10,8 @@ urlFragment: Azure-Time-Series-Insights
 
 # Azure Time Series Insights Samples
 
+![TSI: GA](https://img.shields.io/badge/TSI-GA-blue.svg) ![TSI: Preview](https://img.shields.io/badge/TSI-Preview-blue.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Contribute](https://img.shields.io/badge/PR%27s-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 These are samples that use the [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) data plane APIs.
 
 ## Samples
