@@ -1,3 +1,13 @@
+---
+page_type: sample
+languages:
+- csharp
+products:
+- azure
+description: "These are samples that use the Azure Time Series Insights data plane APIs."
+urlFragment: Azure-Time-Series-Insights
+---
+
 # Azure Time Series Insights Samples
 These are samples that use the [Azure Time Series Insights](https://azure.com/tsi) data plane APIs.
 
