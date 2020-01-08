@@ -32,7 +32,7 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// </summary>
         /// <param name="modelSettings">Model settings including model name,
         /// Time Series ID properties and default type ID.</param>
-        public ModelSettingsResponse(ModelSettings modelSettings = default(ModelSettings))
+        public ModelSettingsResponse(TimeSeriesModelSettings modelSettings = default(TimeSeriesModelSettings))
         {
             ModelSettings = modelSettings;
             CustomInit();
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// and default type ID.
         /// </summary>
         [JsonProperty(PropertyName = "modelSettings")]
-        public ModelSettings ModelSettings { get; private set; }
+        public TimeSeriesModelSettings ModelSettings { get; private set; }
 
     }
 }

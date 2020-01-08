@@ -41,7 +41,7 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// instance does not exist, an error is returned.</param>
         /// <param name="delete">Time series IDs or names of time series
         /// instances to delete.</param>
-        public InstancesBatchRequest(IList<IList<object>> get = default(IList<IList<object>>), IList<TimeSeriesInstance> put = default(IList<TimeSeriesInstance>), IList<TimeSeriesInstance> update = default(IList<TimeSeriesInstance>), IList<IList<object>> delete = default(IList<IList<object>>))
+        public InstancesBatchRequest(InstancesRequestBatchGetOrDelete get = default(InstancesRequestBatchGetOrDelete), IList<TimeSeriesInstance> put = default(IList<TimeSeriesInstance>), IList<TimeSeriesInstance> update = default(IList<TimeSeriesInstance>), InstancesRequestBatchGetOrDelete delete = default(InstancesRequestBatchGetOrDelete))
         {
             Get = get;
             Put = put;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// return.
         /// </summary>
         [JsonProperty(PropertyName = "get")]
-        public IList<IList<object>> Get { get; set; }
+        public InstancesRequestBatchGetOrDelete Get { get; set; }
 
         /// <summary>
         /// Gets or sets time series instances to be created or updated.
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// delete.
         /// </summary>
         [JsonProperty(PropertyName = "delete")]
-        public IList<IList<object>> Delete { get; set; }
+        public InstancesRequestBatchGetOrDelete Delete { get; set; }
 
     }
 }

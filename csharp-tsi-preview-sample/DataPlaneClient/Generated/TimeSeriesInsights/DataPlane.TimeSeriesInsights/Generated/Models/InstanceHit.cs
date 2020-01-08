@@ -17,8 +17,8 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
 
     /// <summary>
     /// Time series instance that is returned by instances search call.
-    /// Returned instance matched the search string and contains highlighted
-    /// text to be displayed to the user.
+    /// Returned instance matched the search request and contains highlighted
+    /// text to be displayed to the user if it is set to 'true'.
     /// </summary>
     public partial class InstanceHit
     {
@@ -35,14 +35,24 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// </summary>
         /// <param name="timeSeriesId">Time series ID of the time series
         /// instance that matched the search request.</param>
+        /// <param name="name">Name of the time series instance that matched
+        /// the search request. May be null.</param>
+        /// <param name="typeId">Represents the type that time series instance
+        /// which matched the search request belongs to. Never null.</param>
+        /// <param name="hierarchyIds">List of time series hierarchy IDs that
+        /// time series instance which matched the search request belongs to.
+        /// Cannot be used to lookup hierarchies. May be null.</param>
         /// <param name="highlights">Highlighted text of time series instance
         /// to be displayed to the user. Highlighting inserts &lt;hit&gt; and
         /// &lt;/hit&gt; tags in the portions of text that matched the search
         /// string. Do not use any of the highlighted properties to do further
         /// API calls.</param>
-        public InstanceHit(IList<object> timeSeriesId = default(IList<object>), InstanceHitHighlights highlights = default(InstanceHitHighlights))
+        public InstanceHit(IList<object> timeSeriesId = default(IList<object>), string name = default(string), System.Guid? typeId = default(System.Guid?), IList<System.Guid?> hierarchyIds = default(IList<System.Guid?>), InstanceHitHighlights highlights = default(InstanceHitHighlights))
         {
             TimeSeriesId = timeSeriesId;
+            Name = name;
+            TypeId = typeId;
+            HierarchyIds = hierarchyIds;
             Highlights = highlights;
             CustomInit();
         }
@@ -58,6 +68,28 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// </summary>
         [JsonProperty(PropertyName = "timeSeriesId")]
         public IList<object> TimeSeriesId { get; private set; }
+
+        /// <summary>
+        /// Gets name of the time series instance that matched the search
+        /// request. May be null.
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets represents the type that time series instance which matched
+        /// the search request belongs to. Never null.
+        /// </summary>
+        [JsonProperty(PropertyName = "typeId")]
+        public System.Guid? TypeId { get; private set; }
+
+        /// <summary>
+        /// Gets list of time series hierarchy IDs that time series instance
+        /// which matched the search request belongs to. Cannot be used to
+        /// lookup hierarchies. May be null.
+        /// </summary>
+        [JsonProperty(PropertyName = "hierarchyIds")]
+        public IList<System.Guid?> HierarchyIds { get; private set; }
 
         /// <summary>
         /// Gets highlighted text of time series instance to be displayed to

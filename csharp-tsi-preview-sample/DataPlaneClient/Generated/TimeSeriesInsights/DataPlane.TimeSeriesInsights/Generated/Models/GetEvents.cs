@@ -46,14 +46,19 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// will be applied to all the variables in the query. Example:
         /// "$event.Status.String='Good'".  Can be null.</param>
         /// <param name="projectedProperties">Projected properties is an array
-        /// of property names which you want to project. These properties must
-        /// appear in the events.</param>
-        public GetEvents(IList<object> timeSeriesId, DateTimeRange searchSpan, Tsx filter = default(Tsx), IList<string> projectedProperties = default(IList<string>))
+        /// of properties which you want to project. These properties must
+        /// appear in the events; otherwise, they are not returned.</param>
+        /// <param name="take">Maximum number of property values in the whole
+        /// response set, not the maximum number of property values per page.
+        /// Defaults to 10,000 when not set. Maximum value of take can be
+        /// 250,000.</param>
+        public GetEvents(IList<object> timeSeriesId, DateTimeRange searchSpan, Tsx filter = default(Tsx), IList<EventProperty> projectedProperties = default(IList<EventProperty>), int? take = default(int?))
         {
             TimeSeriesId = timeSeriesId;
             SearchSpan = searchSpan;
             Filter = filter;
             ProjectedProperties = projectedProperties;
+            Take = take;
             CustomInit();
         }
 
@@ -90,12 +95,21 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         public Tsx Filter { get; set; }
 
         /// <summary>
-        /// Gets or sets projected properties is an array of property names
-        /// which you want to project. These properties must appear in the
-        /// events.
+        /// Gets or sets projected properties is an array of properties which
+        /// you want to project. These properties must appear in the events;
+        /// otherwise, they are not returned.
         /// </summary>
         [JsonProperty(PropertyName = "projectedProperties")]
-        public IList<string> ProjectedProperties { get; set; }
+        public IList<EventProperty> ProjectedProperties { get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum number of property values in the whole
+        /// response set, not the maximum number of property values per page.
+        /// Defaults to 10,000 when not set. Maximum value of take can be
+        /// 250,000.
+        /// </summary>
+        [JsonProperty(PropertyName = "take")]
+        public int? Take { get; set; }
 
         /// <summary>
         /// Validate the object.
