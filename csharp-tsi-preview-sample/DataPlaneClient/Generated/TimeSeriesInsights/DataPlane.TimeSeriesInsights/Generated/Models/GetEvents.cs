@@ -46,9 +46,9 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// will be applied to all the variables in the query. Example:
         /// "$event.Status.String='Good'".  Can be null.</param>
         /// <param name="projectedProperties">Projected properties is an array
-        /// of property names which you want to project. These properties must
-        /// appear in the events.</param>
-        public GetEvents(IList<object> timeSeriesId, DateTimeRange searchSpan, Tsx filter = default(Tsx), IList<string> projectedProperties = default(IList<string>))
+        /// of properties which you want to project. These properties must
+        /// appear in the events; otherwise, they are not returned.</param>
+        public GetEvents(IList<object> timeSeriesId, DateTimeRange searchSpan, Tsx filter = default(Tsx), IList<EventProperty> projectedProperties = default(IList<EventProperty>))
         {
             TimeSeriesId = timeSeriesId;
             SearchSpan = searchSpan;
@@ -90,12 +90,12 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         public Tsx Filter { get; set; }
 
         /// <summary>
-        /// Gets or sets projected properties is an array of property names
-        /// which you want to project. These properties must appear in the
-        /// events.
+        /// Gets or sets projected properties is an array of properties which
+        /// you want to project. These properties must appear in the events;
+        /// otherwise, they are not returned.
         /// </summary>
         [JsonProperty(PropertyName = "projectedProperties")]
-        public IList<string> ProjectedProperties { get; set; }
+        public IList<EventProperty> ProjectedProperties { get; set; }
 
         /// <summary>
         /// Validate the object.
