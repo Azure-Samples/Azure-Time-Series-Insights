@@ -21,5 +21,6 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         public const string Double = "Double";
         public const string String = "String";
         public const string TimeSpan = "TimeSpan";
+        public const string Long = "Long";
     }
 }

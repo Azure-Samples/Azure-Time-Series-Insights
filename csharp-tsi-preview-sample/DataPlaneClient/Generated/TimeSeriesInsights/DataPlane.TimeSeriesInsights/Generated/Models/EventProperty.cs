@@ -33,7 +33,8 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// </summary>
         /// <param name="name">The name of the property.</param>
         /// <param name="type">The type of the property. Possible values
-        /// include: 'Bool', 'DateTime', 'Double', 'String', 'TimeSpan'</param>
+        /// include: 'Bool', 'DateTime', 'Double', 'String', 'TimeSpan',
+        /// 'Long'</param>
         public EventProperty(string name = default(string), string type = default(string))
         {
             Name = name;
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
 
         /// <summary>
         /// Gets or sets the type of the property. Possible values include:
-        /// 'Bool', 'DateTime', 'Double', 'String', 'TimeSpan'
+        /// 'Bool', 'DateTime', 'Double', 'String', 'TimeSpan', 'Long'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

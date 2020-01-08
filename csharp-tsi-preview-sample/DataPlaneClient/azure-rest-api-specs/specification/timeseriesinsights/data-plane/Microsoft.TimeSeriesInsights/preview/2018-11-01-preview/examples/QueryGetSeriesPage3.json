@@ -1,4 +1,4 @@
-﻿{
+{
   "parameters": {
     "api-version": "2018-11-01-preview",
     "environmentFqdn": "10000000-0000-0000-0000-100000000109.env.timeseries.azure.com",
@@ -21,7 +21,9 @@
               "tsx": "$event.Temperature"
             },
             "filter": null,
-            "aggregation": null
+            "aggregation": {
+              "tsx": "avg($value)"
+            }
           }
         },
         "projectedVariables": [
@@ -44,7 +46,8 @@
               67.825
             ]
           }
-        ]
+        ],
+        "progress": 100.0
       }
     }
   }

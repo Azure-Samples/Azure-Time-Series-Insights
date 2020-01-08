@@ -54,13 +54,18 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// the ones already defined in the time series type in the model. When
         /// the inline variable name is the same name as in the model, the
         /// inline variable definition takes precedence. Can be null.</param>
-        public GetSeries(IList<object> timeSeriesId, DateTimeRange searchSpan, Tsx filter = default(Tsx), IList<string> projectedVariables = default(IList<string>), IDictionary<string, Variable> inlineVariables = default(IDictionary<string, Variable>))
+        /// <param name="take">Maximum number of property values in the whole
+        /// response set, not the maximum number of property values per page.
+        /// Defaults to 10,000 when not set. Maximum value of take can be
+        /// 250,000.</param>
+        public GetSeries(IList<object> timeSeriesId, DateTimeRange searchSpan, Tsx filter = default(Tsx), IList<string> projectedVariables = default(IList<string>), IDictionary<string, Variable> inlineVariables = default(IDictionary<string, Variable>), int? take = default(int?))
         {
             TimeSeriesId = timeSeriesId;
             SearchSpan = searchSpan;
             Filter = filter;
             ProjectedVariables = projectedVariables;
             InlineVariables = inlineVariables;
+            Take = take;
             CustomInit();
         }
 
@@ -114,6 +119,15 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// </summary>
         [JsonProperty(PropertyName = "inlineVariables")]
         public IDictionary<string, Variable> InlineVariables { get; set; }
+
+        /// <summary>
+        /// Gets or sets maximum number of property values in the whole
+        /// response set, not the maximum number of property values per page.
+        /// Defaults to 10,000 when not set. Maximum value of take can be
+        /// 250,000.
+        /// </summary>
+        [JsonProperty(PropertyName = "take")]
+        public int? Take { get; set; }
 
         /// <summary>
         /// Validate the object.

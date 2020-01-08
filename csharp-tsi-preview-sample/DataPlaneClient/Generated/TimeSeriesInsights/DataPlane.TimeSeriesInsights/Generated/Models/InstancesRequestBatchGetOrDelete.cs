@@ -38,7 +38,7 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// series instances to return or delete.</param>
         /// <param name="names">List of names of the time series instances to
         /// return or delete.</param>
-        public InstancesRequestBatchGetOrDelete(IList<System.Guid?> timeSeriesIds = default(IList<System.Guid?>), IList<string> names = default(IList<string>))
+        public InstancesRequestBatchGetOrDelete(IList<IList<object>> timeSeriesIds = default(IList<IList<object>>), IList<string> names = default(IList<string>))
         {
             TimeSeriesIds = timeSeriesIds;
             Names = names;
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// to return or delete.
         /// </summary>
         [JsonProperty(PropertyName = "timeSeriesIds")]
-        public IList<System.Guid?> TimeSeriesIds { get; set; }
+        public IList<IList<object>> TimeSeriesIds { get; set; }
 
         /// <summary>
         /// Gets or sets list of names of the time series instances to return

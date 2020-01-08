@@ -15,7 +15,8 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
     using System.Linq;
 
     /// <summary>
-    /// Aggregate variable represents any aggregation calculation.
+    /// Aggregate variable represents any aggregation calculation. Aggregate
+    /// Variables does not support interpolation.
     /// </summary>
     [Newtonsoft.Json.JsonObject("aggregate")]
     public partial class AggregateVariable : Variable
