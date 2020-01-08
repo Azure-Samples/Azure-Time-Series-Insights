@@ -35,6 +35,8 @@ namespace DataPlaneSampleApp
 
         static void Main(string[] args)
         {
+            System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
             _client = GetTimeSeriesInsightsClientAsync().Result;
 
             while (true)
