@@ -1,11 +1,11 @@
 ---
-title: Query data from the by Azure Time Series Insights environment using C#
-description: This sample covers how to query data from the Time Series Insights environment using C#.
+title: Query data from Azure Time Series Insights GA environments using C#
+description: This sample covers how to query data from Azure Time Series Insights GA environments using C#.
 ---
 
-# Query data from the Azure Time Series Insights environment using C#
+# Query data from Azure Time Series Insights GA environments using C#
 
-This C# example demonstrates how to query data from the Azure Time Series Insights environment.
+This C# example demonstrates how to query data from Azure Time Series Insights GA environments.
 
 Set up steps:
 1. Follow steps in [Authentication and authorization](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization) to create an application in your tenant. Record tenant ID, application ID, and application key.
