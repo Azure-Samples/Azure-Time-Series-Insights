@@ -5,7 +5,7 @@ description: This sample covers how to query the GA Reference Data Management AP
 
 # Query the GA Reference Data Management API from Azure Time Series Insights using C# and MSAL.NET
 
-This C# example demonstrates how to query the GA Reference Data Management API from Azure Time Series Insights Preview environments using [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet).
+This C# example demonstrates how to query the GA Reference Data Management API from Azure Time Series Insights Preview environments using [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) as described in the [Manage GA reference data for an Azure Time Series Insights environment by using C#](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-manage-reference-data-csharp) article.
 
 ## Recommended development environment
 
@@ -16,8 +16,8 @@ This C# example demonstrates how to query the GA Reference Data Management API f
 ## Setup and configuration
 
 1. Execute the command: `dotnet restore` in this root directory.
-1. Follow steps in [Authentication and authorization](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization) to create an application in your tenant. Record the **Tenant ID** and **Application ID**.
-1. Set all the constants defined at the beginning of the sample in [Program.cs](./Program.cs).
+1. Follow steps in [Authentication and authorization](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization) to create an application in your tenant. Record the **Application ID**, **Redirect URIs**, and Time Series Insights environment information.
+1. Replace all **#PLACEHOLDER#** values with the appropriate information from the preceding step in [Program.cs](./Program.cs).
 1. Execute the command `dotnet run`in this root directory.
 1. When prompted, use your user profile to login Azure.
 
@@ -25,7 +25,7 @@ This C# example demonstrates how to query the GA Reference Data Management API f
 
 This example demonstrates a few important Azure Active Directory and Azure Time Series Insights features:
 
-1. Acquring an access token using MSAL.NET **PublicClientApplication**.
+1. Acquiring an access token using MSAL.NET **PublicClientApplication**.
 1. Sequential CREATE, READ, UPDATE, and DELETE operations against the [GA Reference Data Management API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
 1. Common response codes including [common error codes](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
 
