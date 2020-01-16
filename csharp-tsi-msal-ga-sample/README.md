@@ -16,7 +16,7 @@ This C# example demonstrates how to query the GA Reference Data Management API f
 ## Setup and configuration
 
 1. Execute the command: `dotnet restore` in this root directory.
-1. Follow steps in [Authentication and authorization](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization) to create an application in your tenant. Record the **Application ID**, **Redirect URIs**, and Time Series Insights environment information.
+1. Follow steps in [Authentication and authorization](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization) to create an application in your tenant. Record the **Application ID**, **Redirect URIs**, and Time Series Insights environment information. Use `http://localhost:8080/` as the **Redirect URI**.
 1. Replace all **#PLACEHOLDER#** values with the appropriate information from the preceding step in [Program.cs](./Program.cs).
 1. Execute the command `dotnet run`in this root directory.
 1. When prompted, use your user profile to login Azure.
