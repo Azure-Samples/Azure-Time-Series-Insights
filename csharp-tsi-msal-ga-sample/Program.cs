@@ -31,9 +31,9 @@ namespace CsharpTsiMsalGaSample
 
         private static async Task<string> AcquireAccessTokenAsync()
         {
-            if (AadAuthenticationAuthority.StartsWith("#PLACEHOLDER#") || AadClientApplicationId == "#PLACEHOLDER#" || AadScopes.Length == 0 || AadRedirectUri == "#PLACEHOLDER#")
+            if (AadClientApplicationId == "#PLACEHOLDER#" || AadScopes.Length == 0 || AadRedirectUri == "#PLACEHOLDER#" || AadAuthenticationAuthority.StartsWith("#PLACEHOLDER#"))
             {
-                throw new Exception($"Use the link {"https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started"} to update the values of 'AadClientApplicationId', 'AadClientApplicationSecret', 'AadScopes', 'AadRedirectUri', and 'AadAuthenticationAuthority'.");
+                throw new Exception($"Use the link {"https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started"} to update the values of 'AadClientApplicationId', 'AadScopes', 'AadRedirectUri', and 'AadAuthenticationAuthority'.");
             }
 
             /**
