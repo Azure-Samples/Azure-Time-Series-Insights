@@ -26,7 +26,7 @@ namespace CsharpTsiMsalGaSample
         // Azure Active Directory application configuration
         internal static string AadClientApplicationId = "#PLACEHOLDER#";
         internal static string[] AadScopes = new string[] { "https://api.timeseries.azure.com//user_impersonation" };
-        internal static string AadRedirectUri = "#PLACEHOLDER#";
+        internal static string AadRedirectUri = "http://localhost:8080/";
         internal static string AadAuthenticationAuthority = "https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/";
 
         private static async Task<string> AcquireAccessTokenAsync()
