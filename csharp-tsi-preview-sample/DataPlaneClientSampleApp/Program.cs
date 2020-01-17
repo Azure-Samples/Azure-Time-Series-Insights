@@ -100,7 +100,7 @@ namespace DataPlaneSampleApp
             [12] = new Operation("Search", RunSearchBatchAsync),
         };
 
-        private static async Task RunSearchBatchAsync()
+                private static async Task RunSearchBatchAsync()
         {
             SearchInstancesRequest searchRequest = new SearchInstancesRequest(
                 "GearboxSensor",
@@ -129,10 +129,10 @@ namespace DataPlaneSampleApp
 
         private static async Task RunGetHierarchiesAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
             do
             {
-                GetHierarchiesPage hierarchies = await _client.TimeSeriesHierarchies.GetAsync();
+                GetHierarchiesPage hierarchies = await _client.TimeSeriesHierarchies.GetAsync(continuationToken: continuationToken);
 
                 PrintResponse(hierarchies.Hierarchies);
                 continuationToken = hierarchies.ContinuationToken;
@@ -168,10 +168,10 @@ namespace DataPlaneSampleApp
 
         private static async Task RunGetTypesAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
             do
             {
-                GetTypesPage types = await _client.TimeSeriesTypes.GetAsync();
+                GetTypesPage types = await _client.TimeSeriesTypes.GetAsync(continuationToken: continuationToken);
 
                 PrintResponse(types.Types);
                 continuationToken = types.ContinuationToken;
@@ -222,7 +222,7 @@ namespace DataPlaneSampleApp
 
         private static async Task RunGetInstancesAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
 
             // Limit the total instances received.
             int limit = 1000;
@@ -230,7 +230,7 @@ namespace DataPlaneSampleApp
             TimeSeriesInstance firstInstance = null;
             do
             {
-                GetInstancesPage instancesPage = await _client.TimeSeriesInstances.GetAsync();
+                GetInstancesPage instancesPage = await _client.TimeSeriesInstances.GetAsync(continuationToken: continuationToken);
 
                 if (instancesPage.Instances != null)
                 {
@@ -276,7 +276,7 @@ namespace DataPlaneSampleApp
 
         private static async Task RunAggregateSeriesAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
             do
             {
                 QueryResultPage queryResponse = await _client.Query.ExecuteAsync(
@@ -286,7 +286,7 @@ namespace DataPlaneSampleApp
                             searchSpan: SearchSpan,
                             filter: null,
                             interval: TimeSpan.FromMinutes(5),
-                            projectedVariables: new[] { "Min_Numeric", "Max_Numeric", "Sum_Numeric", "Avg_Numeric", "First_Numeric", "Last_Numeric", "SampleInterpolated_Numeric_Step_NoBoundary", "SampleInterpolated_Numeric_Step", "SampleInterpolated_Numeric_Linear_NoBoundary", "SampleInterpolated_Numeric_Linear", "Categorical_NonInterpolated", "Categorical_Interpolated", "Count_Aggregate" },
+                            projectedVariables: new[] { "Min_Numeric", "Max_Numeric", "Sum_Numeric", "Avg_Numeric", "First_Numeric", "Last_Numeric", "Count_Aggregate" },
                             inlineVariables: new Dictionary<string, Variable>()
                             {
                                 ["Min_Numeric"] = new NumericVariable(
@@ -307,46 +307,10 @@ namespace DataPlaneSampleApp
                                 ["Last_Numeric"] = new NumericVariable(
                                     value: new Tsx("$event.data"),
                                     aggregation: new Tsx("last($value)")),
-                                ["SampleInterpolated_Numeric_Step_NoBoundary"] = new NumericVariable(
-                                    value: new Tsx("$event.data"),
-                                    aggregation: new Tsx("left($value)"),
-                                    interpolation: new Interpolation(kind: "Step")),
-                                ["SampleInterpolated_Numeric_Step"] = new NumericVariable(
-                                    value: new Tsx("$event.data"),
-                                    aggregation: new Tsx("left($value)"),
-                                    interpolation: new Interpolation(kind: "Step", boundary: new InterpolationBoundary(TimeSpan.FromMinutes(1)))),
-                                ["SampleInterpolated_Numeric_Linear_NoBoundary"] = new NumericVariable(
-                                    value: new Tsx("$event.data"),
-                                    aggregation: new Tsx("left($value)"),
-                                    interpolation: new Interpolation(kind: "Linear")),
-                                ["SampleInterpolated_Numeric_Linear"] = new NumericVariable(
-                                    value: new Tsx("$event.data"),
-                                    aggregation: new Tsx("left($value)"),
-                                    interpolation: new Interpolation(kind: "Linear", boundary: new InterpolationBoundary(TimeSpan.FromMinutes(1)))),
-                                ["Categorical_NonInterpolated"] = new CategoricalVariable(
-                                    value: new Tsx("tolong($event.data)"),
-                                    categories: new List<TimeSeriesAggregateCategory>()
-                                    {
-                                        new TimeSeriesAggregateCategory(label: "Good", values: new List<object>(){39}),
-                                        new TimeSeriesAggregateCategory(label: "Bad", values: new List<object>(){40}),
-                                        new TimeSeriesAggregateCategory(label: "OK", values: new List<object>(){41}),
-                                        new TimeSeriesAggregateCategory(label: "Reject", values: new List<object>(){42})
-                                    },
-                                    defaultCategory: new TimeSeriesDefaultCategory("Others")),
-                                ["Categorical_Interpolated"] = new CategoricalVariable(
-                                    value: new Tsx("tolong($event.data)"),
-                                    categories: new List<TimeSeriesAggregateCategory>()
-                                    {
-                                        new TimeSeriesAggregateCategory(label: "Good", values: new List<object>(){39}),
-                                        new TimeSeriesAggregateCategory(label: "Bad", values: new List<object>(){40}),
-                                        new TimeSeriesAggregateCategory(label: "OK", values: new List<object>(){41}),
-                                        new TimeSeriesAggregateCategory(label: "Reject", values: new List<object>(){42})
-                                    },
-                                    defaultCategory: new TimeSeriesDefaultCategory("Others"),
-                                    interpolation: new Interpolation(kind: "Step", boundary: new InterpolationBoundary(TimeSpan.FromMinutes(1)))),
                                 ["Count_Aggregate"] = new AggregateVariable(
                                     aggregation: new Tsx("count()"))
-                            })));
+                            })),
+                    continuationToken: continuationToken);
 
                 PrintResponse(queryResponse);
 
@@ -357,7 +321,7 @@ namespace DataPlaneSampleApp
 
         private static async Task RunGetSeriesAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
             do
             {
                 QueryResultPage queryResponse = await _client.Query.ExecuteAsync(
@@ -372,7 +336,8 @@ namespace DataPlaneSampleApp
                                 ["Value"] = new NumericVariable(
                                     value: new Tsx("$event.data"),
                                     aggregation: new Tsx("avg($value)"))
-                            })));
+                            })),
+                    continuationToken: continuationToken);
 
                 PrintResponse(queryResponse);
 
@@ -383,7 +348,7 @@ namespace DataPlaneSampleApp
 
         private static async Task RunGetEventsAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
             do
             {
                 QueryResultPage queryResponse = await _client.Query.ExecuteAsync(
@@ -391,7 +356,8 @@ namespace DataPlaneSampleApp
                         getEvents: new GetEvents(
                             timeSeriesId: TimeSeriesId,
                             searchSpan: SearchSpan,
-                            filter: null)));
+                            filter: null)),
+                    continuationToken: continuationToken);
 
                 PrintResponse(queryResponse);
 
@@ -402,7 +368,7 @@ namespace DataPlaneSampleApp
 
         private static async Task RunGetEventsWithProjectedPropertiesAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
             do
             {
                 QueryResultPage queryResponse = await _client.Query.ExecuteAsync(
@@ -411,7 +377,8 @@ namespace DataPlaneSampleApp
                             timeSeriesId: TimeSeriesId,
                             searchSpan: SearchSpan,
                             filter: null,
-                            projectedProperties: new List<EventProperty>() { new EventProperty("data", PropertyTypes.Double) })));
+                            projectedProperties: new List<EventProperty>() { new EventProperty("data", PropertyTypes.Double) })),
+                    continuationToken: continuationToken);
 
                 PrintResponse(queryResponse);
 
