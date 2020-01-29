@@ -1,11 +1,11 @@
 ---
-title: Query the GA Reference Data Management API from Azure Time Series Insights GA environments using C# and MSAL.NET
-description: This sample covers how to query the GA Reference Data Management API from Azure Time Series Insights Preview environments using C# and MSAL.NET.
+title: Query the Reference Data Management API from Azure Time Series Insights GA environments using C# and MSAL.NET
+description: This sample covers how to query the Reference Data Management API from Azure Time Series Insights GA environments using C# and MSAL.NET.
 ---
 
 # Query the GA Reference Data Management API from Azure Time Series Insights using C# and MSAL.NET
 
-This C# example demonstrates how to query the GA Reference Data Management API from Azure Time Series Insights Preview environments using [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) as described in the [Manage GA reference data for an Azure Time Series Insights environment by using C#](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-manage-reference-data-csharp) article.
+This C# example demonstrates how to query the Reference Data Management API from Azure Time Series Insights GA environments using [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) as described in the [Manage GA reference data for an Azure Time Series Insights environment by using C#](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-manage-reference-data-csharp) article.
 
 ## Recommended development environment
 
