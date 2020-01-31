@@ -411,6 +411,7 @@ namespace TimeSeriesInsightsQuerySample
 
         static void Main(string[] args)
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             Task.Run(async () => await SampleAsync()).Wait();
         }
     }
