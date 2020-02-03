@@ -7,7 +7,7 @@ This C# example demonstrates how to query data from the [Preview Data Access API
 1. [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - Version 16.4.2+ is recommended (Visual Studio 2015+).
 1. Open the `TSIPreviewDataPlaneclient.sln` solution and set `DataPlaneClientSampleApp` as the default project
 1. Run the [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) as specified in the [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) to generate the Time Series Insights Preview client dependencies.
-1. Compile the example to an executable `.exe` file
+1. Compile the example to an executable `.exe` file.
 1. Run the `.exe` file by double-clicking on it.
 
 ## See also
