@@ -8,14 +8,30 @@ description: This sample covers how to query data from Azure Time Series Insight
 This C# example demonstrates how to use the [GA Query APIs](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) to query data from Azure Time Series Insights GA environments as described in [Query data from the Azure Time Series Insights GA environment using C#](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-query-data-csharp).
 
 Set up steps:
-1. Follow steps in [Authentication and authorization](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization) to create an application in your tenant. Record tenant ID, application ID, and application key.
-1. Set all the constants defined at the beginning of the sample.
+
+1. [Provision a GA Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) environment.
+1. Configure your Azure Time Series Insights environment for Azure Active Directory as described in [Authentication and authorization](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization). 
+1. Install the required project dependencies.
+1. Edit the sample code below by replacing each **#DUMMY#** with the appropriate environment identifier.
+1. Execute the code inside Visual Studio.
 
 The sample shows several basic examples of Query API usage:
-1. As a preparation step, the access token is acquired through the Azure Active Directory API. This token is required in the `Authorization` header of every Query API request.
-1. The list of environments that the user has access to is obtained. One of the environments is picked up as the environment of interest, and further data is queried for this environment.
-1. As an example of HTTPS request, availability data is requested for the environment of interest.
-1. As an example of web socket request, event aggregates data is requested for the environment of interest. Data is requested for the whole availability time range.
+
+* How to acquire an access token through Azure Active Directory using [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
+
+* How to pass that acquired access token in the `Authorization` header of subsequent Query API requests. 
+
+* The sample calls each of the GA Query APIs demonstrating how HTTP requests are made to the:
+    * [Get Environments API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api) to return the environments the user has access to
+    * [Get Environment Availability API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
+    * [Get Environment Metadata API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api) to retrieve environment metadata
+    * [Get Environments Events API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
+    * [Get Environment Aggregates API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
+    
+* How to interact with the GA Query APIs using WSS to message the:
+
+   * [Get Environment Events Streamed API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
+   * [Get Environment Aggregates Streamed API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
 
 ## See also
 
