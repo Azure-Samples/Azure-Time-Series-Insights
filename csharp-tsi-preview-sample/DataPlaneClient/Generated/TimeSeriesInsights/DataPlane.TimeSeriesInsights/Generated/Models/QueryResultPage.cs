@@ -54,11 +54,16 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// values for each of the timestamps.  Can be null if server was
         /// unable to fill the page in this request, or can be empty if there
         /// are no more objects when continuation token is null.</param>
-        public QueryResultPage(string continuationToken = default(string), IList<System.DateTime?> timestamps = default(IList<System.DateTime?>), IList<PropertyValues> properties = default(IList<PropertyValues>))
+        /// <param name="progress">Approximate progress of the query in
+        /// percentage. It can be between 0 and 100. When the continuation
+        /// token in the response is null, the progress is expected to be
+        /// 100.</param>
+        public QueryResultPage(string continuationToken = default(string), IList<System.DateTime?> timestamps = default(IList<System.DateTime?>), IList<PropertyValues> properties = default(IList<PropertyValues>), double? progress = default(double?))
             : base(continuationToken)
         {
             Timestamps = timestamps;
             Properties = properties;
+            Progress = progress;
             CustomInit();
         }
 
@@ -86,6 +91,14 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public IList<PropertyValues> Properties { get; private set; }
+
+        /// <summary>
+        /// Gets approximate progress of the query in percentage. It can be
+        /// between 0 and 100. When the continuation token in the response is
+        /// null, the progress is expected to be 100.
+        /// </summary>
+        [JsonProperty(PropertyName = "progress")]
+        public double? Progress { get; private set; }
 
     }
 }

@@ -1,4 +1,4 @@
-﻿{
+{
   "parameters": {
     "api-version": "2018-11-01-preview",
     "environmentFqdn": "10000000-0000-0000-0000-100000000109.env.timeseries.azure.com",
@@ -17,7 +17,6 @@
         "inlineVariables": {
           "Count": {
             "kind": "aggregate",
-            "value": null,
             "filter": null,
             "aggregation": {
               "tsx": "count()"
@@ -71,18 +70,18 @@
         "properties": [
           {
             "name": "Count",
-            "type": "Double",
+            "type": "Long",
             "values": [
-              50.0,
-              60.0,
-              60.0,
-              60.0,
-              60.0,
-              60.0,
-              60.0,
-              60.0,
-              60.0,
-              60.0,
+              50,
+              60,
+              60,
+              60,
+              60,
+              60,
+              60,
+              60,
+              60,
+              60,
               null
             ]
           },
@@ -137,7 +136,8 @@
               null
             ]
           }
-        ]
+        ],
+        "progress": 100.0
       }
     }
   }

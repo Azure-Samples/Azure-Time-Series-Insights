@@ -34,7 +34,8 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// </summary>
         /// <param name="name">The name of the property.</param>
         /// <param name="type">The type of the property. Possible values
-        /// include: 'Bool', 'DateTime', 'Double', 'String', 'TimeSpan'</param>
+        /// include: 'Bool', 'DateTime', 'Double', 'String', 'TimeSpan',
+        /// 'Long'</param>
         /// <param name="values">Values of a single property corresponding to
         /// the timestamps. May contain nulls. Type of values matches the type
         /// of property.</param>

@@ -34,10 +34,10 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// <summary>
         /// Initializes a new instance of the InstanceHitHighlights class.
         /// </summary>
-        /// <param name="timeSeriesIds">List of highlighted string values of
+        /// <param name="timeSeriesId">List of highlighted string values of
         /// Time Series ID for displaying. Cannot be used to lookup
         /// instance.</param>
-        /// <param name="type">Highlighted time series type name that this
+        /// <param name="typeName">Highlighted time series type name that this
         /// instance belongs to.</param>
         /// <param name="name">Highlighted name of time series instance. May be
         /// null.</param>
@@ -46,17 +46,21 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// <param name="hierarchyIds">List of highlighted time series
         /// hierarchy IDs that time series instance belongs to. Cannot be used
         /// to lookup hierarchies. May be null.</param>
+        /// <param name="hierarchyNames">List of highlighted time series
+        /// hierarchy names that time series instance belongs to. Cannot be
+        /// used to lookup hierarchies. May be null.</param>
         /// <param name="instanceFieldNames">List of highlighted time series
         /// instance field names. May be null.</param>
         /// <param name="instanceFieldValues">List of highlighted time series
         /// instance field values. May be null.</param>
-        public InstanceHitHighlights(IList<string> timeSeriesIds = default(IList<string>), string type = default(string), string name = default(string), string description = default(string), IList<System.Guid?> hierarchyIds = default(IList<System.Guid?>), IList<string> instanceFieldNames = default(IList<string>), IList<string> instanceFieldValues = default(IList<string>))
+        public InstanceHitHighlights(IList<string> timeSeriesId = default(IList<string>), string typeName = default(string), string name = default(string), string description = default(string), IList<System.Guid?> hierarchyIds = default(IList<System.Guid?>), IList<string> hierarchyNames = default(IList<string>), IList<string> instanceFieldNames = default(IList<string>), IList<string> instanceFieldValues = default(IList<string>))
         {
-            TimeSeriesIds = timeSeriesIds;
-            Type = type;
+            TimeSeriesId = timeSeriesId;
+            TypeName = typeName;
             Name = name;
             Description = description;
             HierarchyIds = hierarchyIds;
+            HierarchyNames = hierarchyNames;
             InstanceFieldNames = instanceFieldNames;
             InstanceFieldValues = instanceFieldValues;
             CustomInit();
@@ -71,15 +75,15 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// Gets list of highlighted string values of Time Series ID for
         /// displaying. Cannot be used to lookup instance.
         /// </summary>
-        [JsonProperty(PropertyName = "timeSeriesIds")]
-        public IList<string> TimeSeriesIds { get; private set; }
+        [JsonProperty(PropertyName = "timeSeriesId")]
+        public IList<string> TimeSeriesId { get; private set; }
 
         /// <summary>
         /// Gets highlighted time series type name that this instance belongs
         /// to.
         /// </summary>
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        [JsonProperty(PropertyName = "typeName")]
+        public string TypeName { get; private set; }
 
         /// <summary>
         /// Gets highlighted name of time series instance. May be null.
@@ -100,6 +104,14 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// </summary>
         [JsonProperty(PropertyName = "hierarchyIds")]
         public IList<System.Guid?> HierarchyIds { get; private set; }
+
+        /// <summary>
+        /// Gets list of highlighted time series hierarchy names that time
+        /// series instance belongs to. Cannot be used to lookup hierarchies.
+        /// May be null.
+        /// </summary>
+        [JsonProperty(PropertyName = "hierarchyNames")]
+        public IList<string> HierarchyNames { get; private set; }
 
         /// <summary>
         /// Gets list of highlighted time series instance field names. May be

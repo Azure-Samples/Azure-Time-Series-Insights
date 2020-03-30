@@ -8,9 +8,10 @@ using Microsoft.Azure.TimeSeriesInsights;
 using Microsoft.Azure.TimeSeriesInsights.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
+using Newtonsoft.Json;
 using DateTimeRange = Microsoft.Azure.TimeSeriesInsights.Models.DateTimeRange;
 
-namespace DataPlaneClientSampleApp
+namespace DataPlaneSampleApp
 {
     public sealed class Program
     {
@@ -34,7 +35,7 @@ namespace DataPlaneClientSampleApp
 
         static void Main(string[] args)
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            System.Net.ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
             _client = GetTimeSeriesInsightsClientAsync().Result;
 
@@ -89,28 +90,49 @@ namespace DataPlaneClientSampleApp
             [2] = new Operation("Query/AggregateSeries", RunAggregateSeriesAsync),
             [3] = new Operation("Query/GetSeries", RunGetSeriesAsync),
             [4] = new Operation("Query/GetEvents", RunGetEventsAsync),
-            [5] = new Operation("GetInstances", RunGetInstancesAsync),
-            [6] = new Operation("InstancesBatch", RunInstancesBatchAsync),
-            [7] = new Operation("GetTypes", RunGetTypesAsync),
-            [8] = new Operation("TypesBatch", RunTypesBatchAsync),
-            [9] = new Operation("GetHierarchies", RunGetHierarchiesAsync),
-            [10] = new Operation("HierarchiesBatch", RunHierarchiesBatchAsync),
+            [5] = new Operation("Query/GetEventsWithProjectedProperties", RunGetEventsWithProjectedPropertiesAsync),
+            [6] = new Operation("GetInstances", RunGetInstancesAsync),
+            [7] = new Operation("InstancesBatch", RunInstancesBatchAsync),
+            [8] = new Operation("GetTypes", RunGetTypesAsync),
+            [9] = new Operation("TypesBatch", RunTypesBatchAsync),
+            [10] = new Operation("GetHierarchies", RunGetHierarchiesAsync),
+            [11] = new Operation("HierarchiesBatch", RunHierarchiesBatchAsync),
+            [12] = new Operation("Search", RunSearchBatchAsync),
         };
+
+                private static async Task RunSearchBatchAsync()
+        {
+            SearchInstancesRequest searchRequest = new SearchInstancesRequest(
+                "GearboxSensor",
+                new List<string>() { "Contoso WindFarm Hierarchy" },
+                new SearchInstancesParameters(true, new InstancesSortParameter(InstancesSortBy.Rank), true, 10),
+                new SearchInstancesHierarchiesParameters(
+                    new HierarchiesExpandParameter(HierarchiesExpandKind.UntilChildren),
+                    new HierarchiesSortParameter(HierarchiesSortBy.CumulativeInstanceCount),
+                    10));
+            SearchInstancesResponsePage searchResponse = await _client.TimeSeriesInstances.SearchAsync(searchRequest);
+            PrintResponse(searchResponse);
+        }
+
+        private static void PrintResponse(SearchInstancesResponsePage searchResponse)
+        {
+            Console.WriteLine("Search Results: {0}", JsonConvert.SerializeObject(searchResponse, Formatting.Indented));
+        }
 
         private static async Task RunHierarchiesBatchAsync()
         {
             HierarchiesBatchResponse hierarchies =
-                await _client.ExecuteHierarchiesBatchOperationAsync(new HierarchiesBatchRequest(get: new HierarchiesRequestBatchGetDelete(names: new List<string>() { "Contoso WindFarm Hierarchy" })));
+                await _client.TimeSeriesHierarchies.ExecuteBatchAsync(new HierarchiesBatchRequest(get: new HierarchiesRequestBatchGetDelete(names: new List<string>() { "Contoso WindFarm Hierarchy" })));
 
             PrintResponse(hierarchies.Get.First().Hierarchy);
         }
 
         private static async Task RunGetHierarchiesAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
             do
             {
-                GetHierarchiesPage hierarchies = await _client.GetHierarchiesPagedAsync();
+                GetHierarchiesPage hierarchies = await _client.TimeSeriesHierarchies.GetAsync(continuationToken: continuationToken);
 
                 PrintResponse(hierarchies.Hierarchies);
                 continuationToken = hierarchies.ContinuationToken;
@@ -137,7 +159,7 @@ namespace DataPlaneClientSampleApp
 
         private static async Task RunTypesBatchAsync()
         {
-            TypesBatchResponse types = await _client.ExecuteTypesBatchOperationAsync(
+            TypesBatchResponse types = await _client.TimeSeriesTypes.ExecuteBatchAsync(
                 new TypesBatchRequest(
                     get: new TypesRequestBatchGetOrDelete(typeIds: new List<Guid?>() { Guid.Parse("1BE09AF9-F089-4D6B-9F0B-48018B5F7393") })));
 
@@ -146,10 +168,10 @@ namespace DataPlaneClientSampleApp
 
         private static async Task RunGetTypesAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
             do
             {
-                GetTypesPage types = await _client.GetTypesPagedAsync();
+                GetTypesPage types = await _client.TimeSeriesTypes.GetAsync(continuationToken: continuationToken);
 
                 PrintResponse(types.Types);
                 continuationToken = types.ContinuationToken;
@@ -192,15 +214,15 @@ namespace DataPlaneClientSampleApp
 
         private static async Task RunInstancesBatchAsync()
         {
-            InstancesBatchResponse instances = await _client.ExecuteInstancesBatchOperationAsync(
-                new InstancesBatchRequest(get: new IList<object>[] { TimeSeriesId }));
+            InstancesBatchResponse instances = await _client.TimeSeriesInstances.ExecuteBatchAsync(
+                new InstancesBatchRequest(get: new InstancesRequestBatchGetOrDelete(new IList<object>[] { TimeSeriesId })));
 
             PrintResponse(instances.Get.First().Instance);
         }
 
         private static async Task RunGetInstancesAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
 
             // Limit the total instances received.
             int limit = 1000;
@@ -208,7 +230,7 @@ namespace DataPlaneClientSampleApp
             TimeSeriesInstance firstInstance = null;
             do
             {
-                GetInstancesPage instancesPage = await _client.GetInstancesPagedAsync();
+                GetInstancesPage instancesPage = await _client.TimeSeriesInstances.GetAsync(continuationToken: continuationToken);
 
                 if (instancesPage.Instances != null)
                 {
@@ -242,22 +264,22 @@ namespace DataPlaneClientSampleApp
 
         private static async Task GetAvailabilityAsync()
         {
-            AvailabilityResponse availability = await _client.GetAvailabilityAsync();
+            AvailabilityResponse availability = await _client.Query.GetAvailabilityAsync();
             PrintResponse(availability.Availability);
         }
 
         private static async Task GetEventSchemaAsync()
         {
-            EventSchema eventSchema = await _client.GetEventSchemaAsync(new GetEventSchemaRequest(SearchSpan));
+            EventSchema eventSchema = await _client.Query.GetEventSchemaAsync(new GetEventSchemaRequest(SearchSpan));
             PrintResponse(eventSchema);
         }
 
         private static async Task RunAggregateSeriesAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
             do
             {
-                QueryResultPage queryResponse = await _client.ExecuteQueryPagedAsync(
+                QueryResultPage queryResponse = await _client.Query.ExecuteAsync(
                     new QueryRequest(
                         aggregateSeries: new AggregateSeries(
                             timeSeriesId: TimeSeriesId,
@@ -287,7 +309,8 @@ namespace DataPlaneClientSampleApp
                                     aggregation: new Tsx("last($value)")),
                                 ["Count_Aggregate"] = new AggregateVariable(
                                     aggregation: new Tsx("count()"))
-                            })));
+                            })),
+                    continuationToken: continuationToken);
 
                 PrintResponse(queryResponse);
 
@@ -298,10 +321,10 @@ namespace DataPlaneClientSampleApp
 
         private static async Task RunGetSeriesAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
             do
             {
-                QueryResultPage queryResponse = await _client.ExecuteQueryPagedAsync(
+                QueryResultPage queryResponse = await _client.Query.ExecuteAsync(
                     new QueryRequest(
                         getSeries: new GetSeries(
                             timeSeriesId: TimeSeriesId,
@@ -313,7 +336,8 @@ namespace DataPlaneClientSampleApp
                                 ["Value"] = new NumericVariable(
                                     value: new Tsx("$event.data"),
                                     aggregation: new Tsx("avg($value)"))
-                            })));
+                            })),
+                    continuationToken: continuationToken);
 
                 PrintResponse(queryResponse);
 
@@ -324,15 +348,37 @@ namespace DataPlaneClientSampleApp
 
         private static async Task RunGetEventsAsync()
         {
-            string continuationToken;
+            string continuationToken = null;
             do
             {
-                QueryResultPage queryResponse = await _client.ExecuteQueryPagedAsync(
+                QueryResultPage queryResponse = await _client.Query.ExecuteAsync(
                     new QueryRequest(
                         getEvents: new GetEvents(
                             timeSeriesId: TimeSeriesId,
                             searchSpan: SearchSpan,
-                            filter: null)));
+                            filter: null)),
+                    continuationToken: continuationToken);
+
+                PrintResponse(queryResponse);
+
+                continuationToken = queryResponse.ContinuationToken;
+            }
+            while (continuationToken != null);
+        }
+
+        private static async Task RunGetEventsWithProjectedPropertiesAsync()
+        {
+            string continuationToken = null;
+            do
+            {
+                QueryResultPage queryResponse = await _client.Query.ExecuteAsync(
+                    new QueryRequest(
+                        getEvents: new GetEvents(
+                            timeSeriesId: TimeSeriesId,
+                            searchSpan: SearchSpan,
+                            filter: null,
+                            projectedProperties: new List<EventProperty>() { new EventProperty("data", PropertyTypes.Double) })),
+                    continuationToken: continuationToken);
 
                 PrintResponse(queryResponse);
 

@@ -17,8 +17,12 @@ These are samples that use the [Azure Time Series Insights](https://azure.micros
 ## Samples
 
 ### TSI Preview
+* [C# Sample App](csharp-tsi-preview-sample)
 
-* [C# Sample App](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)
+### TSI GA
+* [C# Sample App](csharp-tsi-ga-sample)
+* [C# Sample App using MSAL.NET](csharp-tsi-msal-ga-sample)
+* [Javascript Sample App](javascript-tsi-ga-sample)
 
 ### TSI General Availability
 
