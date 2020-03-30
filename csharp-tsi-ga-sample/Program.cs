@@ -189,12 +189,12 @@ namespace TimeSeriesInsightsQuerySample
             // Suitable for native apps, and not on server-side of a web application.
             //AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
             //    resource: "https://api.timeseries.azure.com/",
-            //    // Set well-known client ID for Azure PowerShell
-            //    clientId: "1950a258-227b-4e31-a9cf-717495945fc2",
+            //    clientId: {your clientId generated from the steps above},
+            //    
             //    // Set redirect URI for Azure PowerShell
             //    redirectUri: new Uri("urn:ietf:wg:oauth:2.0:oob"),
             //    parameters: new PlatformParameters(PromptBehavior.Auto));
-
+            
             return token.AccessToken;
         }
 
