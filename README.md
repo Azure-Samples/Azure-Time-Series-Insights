@@ -17,17 +17,14 @@ These are samples that use the [Azure Time Series Insights](https://azure.micros
 ## Samples
 
 ### TSI Preview
-* [C# Sample App](csharp-tsi-preview-sample)
-
-### TSI GA
-* [C# Sample App](csharp-tsi-ga-sample)
-* [C# Sample App using MSAL.NET](csharp-tsi-msal-ga-sample)
-* [Javascript Sample App](javascript-tsi-ga-sample)
+* [C# Sample App](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)
 
 ### TSI General Availability
 
 * [C# Sample App](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)
-* [Javascript Sample App](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/javascript-tsi-ga-sample)
+* [C# Sample App using MSAL.NET](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-msal-ga-sample)
+* [JavaScript Sample App](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/javascript-tsi-ga-sample)
+* [JavaScript Hosted Samples](https://tsiclientsample.azurewebsites.net/)
 
 ## Getting Started
 
@@ -39,6 +36,9 @@ To get started, refer to the README.md and the [Authentication and authorization
 
 ## Resources
 
-* See the [TSI JavaScript Client SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) and [hosted samples](https://tsiclientsample.azurewebsites.net/).
+* See the [TSI JavaScript Client SDK API Reference](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) and [hosted samples](https://tsiclientsample.azurewebsites.net/).
 
-* C# examples are provided to manage [General Availability](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-query-data-csharp), [General Availability reference data](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-manage-reference-data-csharp), and [Preview](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-query-data-csharp) apps.
+* See how to build apps in C# with minimal dependencies:
+  * [Query Data in General Availability Environments](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-query-data-csharp)
+  * [Query Data in Preview Environments](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-query-data-csharp)
+  * [Manage Reference Data in General Availability Environment](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-manage-reference-data-csharp)
