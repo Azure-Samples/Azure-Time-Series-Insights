@@ -169,33 +169,32 @@ namespace TimeSeriesInsightsQuerySample
 
         private static async Task<string> AcquireAccessTokenAsync()
         {
-            if (ApplicationClientId == "#DUMMY#" || ApplicationClientSecret == "#DUMMY#" || Tenant.StartsWith("#DUMMY#"))
+            if (AadClientApplicationId == "#PLACEHOLDER#" || AadScopes.Length == 0 || AadRedirectUri == "#PLACEHOLDER#" || AadTenantName.StartsWith("#PLACEHOLDER#"))
             {
-                throw new Exception(
-                    $"Use the link {"https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
+                throw new Exception($"Use the link {"https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started"} to update the values of 'AadClientApplicationId', 'AadScopes', 'AadRedirectUri', and 'AadAuthenticationAuthority'.");
             }
 
-            var authenticationContext = new AuthenticationContext(
-                $"https://login.windows.net/{Tenant}",
-                TokenCache.DefaultShared);
+            IPublicClientApplication app = PublicClientApplicationBuilder
+                        .Create(AadClientApplicationId)
+                        .WithRedirectUri(AadRedirectUri)
+                        .WithAuthority(AadAuthenticationAuthority)
+                        .Build();
 
-            AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
-                resource: "https://api.timeseries.azure.com/",
-                clientCredential: new ClientCredential(
-                    clientId: ApplicationClientId,
-                    clientSecret: ApplicationClientSecret));
+            AuthenticationResult result = await app
+                        .AcquireTokenInteractive(AadScopes)
+                        .ExecuteAsync();
 
             // Show interactive logon dialog to acquire token on behalf of the user.
             // Suitable for native apps, and not on server-side of a web application.
-            //AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
-            //    resource: "https://api.timeseries.azure.com/",
-            //    clientId: {your clientId generated from the steps above},
+            // AuthenticationResult result = await app
+            //          .AcquireTokenInteractive(AadScopes)
+            //          .ExecuteAsync();
             //    
             //    // Set redirect URI for Azure PowerShell
             //    redirectUri: new Uri("urn:ietf:wg:oauth:2.0:oob"),
             //    parameters: new PlatformParameters(PromptBehavior.Auto));
-            
-            return token.AccessToken;
+
+            return result.AccessToken;
         }
 
         private static HttpWebRequest CreateHttpsWebRequest(string host, string method, string path, string accessToken, string[] queryArgs = null)
