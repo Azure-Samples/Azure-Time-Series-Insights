@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPlaneClient", "DataPlaneClient\DataPlaneClient.csproj", "{FC0A4165-E69E-4D9A-9C3F-D8062010D697}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataPlaneClientSampleApp", "DataPlaneClientSampleApp\DataPlaneClientSampleApp.csproj", "{F24742E1-1A2E-4047-82F3-B6F37A04E231}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC0A4165-E69E-4D9A-9C3F-D8062010D697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC0A4165-E69E-4D9A-9C3F-D8062010D697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC0A4165-E69E-4D9A-9C3F-D8062010D697}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC0A4165-E69E-4D9A-9C3F-D8062010D697}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{F24742E1-1A2E-4047-82F3-B6F37A04E231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F24742E1-1A2E-4047-82F3-B6F37A04E231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F24742E1-1A2E-4047-82F3-B6F37A04E231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F24742E1-1A2E-4047-82F3-B6F37A04E231}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D46F56F-8D76-44A9-BD8E-BAF35D66F635}
+	EndGlobalSection
+EndGlobal
