@@ -1,0 +1,257 @@
+﻿<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC0A4165-E69E-4D9A-9C3F-D8062010D697}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataPlaneClient</RootNamespace>
+    <AssemblyName>DataPlaneClient</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.20\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.19\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\AvailabilityGet.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\AvailabilityGetEmpty.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ColdStoreAvailabilityGet.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ColdStoreEventSchemaGet.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ColdStoreQueryAggregateSeriesPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ColdStoreQueryAggregateSeriesPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ColdStoreQueryGetEventsPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ColdStoreQueryGetEventsPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ColdStoreQueryGetEventsPage3.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ColdStoreQueryGetEventsPage4.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ColdStoreQueryGetSeriesPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ColdStoreQueryGetSeriesPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ColdStoreQueryGetSeriesPage3.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\EventSchemaGet.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\EventSchemaGetEmpty.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\HierarchiesBatchDeleteByIds.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\HierarchiesBatchDeleteByNames.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\HierarchiesBatchGetByIds.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\HierarchiesBatchGetByNames.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\HierarchiesBatchPut.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\HierarchiesListPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\HierarchiesListPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\HierarchiesListPage3.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\InstancesBatchDeleteByIds.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\InstancesBatchDeleteByNames.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\InstancesBatchGetByIds.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\InstancesBatchGetByNames.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\InstancesBatchPut.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\InstancesBatchUpdate.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\InstancesListPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\InstancesListPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\InstancesListPage3.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\InstancesSuggest.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ModelSettingsGet.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\ModelSettingsUpdateName.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryAggregateSeriesPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryAggregateSeriesPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryAggregateSeriesWithCategoricalInterpolatedVariable.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryAggregateSeriesWithCategoricalVariable.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryAggregateSeriesWithSampleInterpolation.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryGetEventsPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryGetEventsPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryGetEventsPage3.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryGetEventsPage4.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryGetEventsWithTakePage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryGetEventsWithTakePage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryGetSeriesPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryGetSeriesPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryGetSeriesPage3.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryGetSeriesWithTakePage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\QueryGetSeriesWithTakePage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\SearchInstancesDefault.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\SearchInstancesExpandHierarchiesOnly.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\SearchInstancesHierarchiesDefaultInputPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\SearchInstancesHierarchiesDefaultInputPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\SearchInstancesHierarchiesDefaultInputPage3.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\SearchInstancesOneLevel.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\SearchInstancesRecursive.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\SearchInstancesUntilChildren.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\TypesBatchDeleteByIds.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\TypesBatchDeleteByNames.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\TypesBatchGetByIds.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\TypesBatchGetByNames.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\TypesBatchPut.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\TypesListPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\TypesListPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\TypesListPage3.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\WarmStoreAvailabilityGet.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\WarmStoreEventSchemaGet.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\WarmStoreQueryAggregateSeriesPage.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\WarmStoreQueryGetEventsPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\WarmStoreQueryGetEventsPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\WarmStoreQueryGetEventsPage3.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\WarmStoreQueryGetEventsPage4.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\WarmStoreQueryGetSeriesPage1.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\WarmStoreQueryGetSeriesPage2.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\examples\WarmStoreQueryGetSeriesPage3.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\Microsoft.TimeSeriesInsights\stable\2020-07-31\timeseriesinsights.json" />
+    <None Include="azure-rest-api-specs\specification\timeseriesinsights\data-plane\readme.md" />
+    <None Include="GenerateCode.bat" />
+    <None Include="Readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\IModelSettings.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\IQuery.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\ITimeSeriesHierarchies.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\ITimeSeriesInsightsClient.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\ITimeSeriesInstances.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\ITimeSeriesTypes.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\ModelSettings.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\ModelSettingsExtensions.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\AggregateSeries.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\AggregateVariable.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\Availability.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\AvailabilityResponse.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\CategoricalVariable.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\DateTimeRange.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\EventProperty.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\EventSchema.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\GetEvents.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\GetEventSchemaRequest.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\GetHierarchiesPage.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\GetInstancesPage.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\GetSeries.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\GetTypesPage.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\HierarchiesBatchRequest.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\HierarchiesBatchResponse.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\HierarchiesExpandKind.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\HierarchiesExpandParameter.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\HierarchiesRequestBatchGetDelete.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\HierarchiesSortBy.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\HierarchiesSortParameter.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\HierarchyHit.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InstanceHit.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InstanceHitHighlights.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InstanceOrError.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InstancesBatchRequest.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InstancesBatchResponse.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InstancesRequestBatchGetOrDelete.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InstancesSearchStringSuggestion.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InstancesSortBy.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InstancesSortParameter.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InstancesSuggestRequest.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InstancesSuggestResponse.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\Interpolation.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InterpolationBoundary.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\InterpolationKind.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\ModelSettingsGetHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\ModelSettingsResponse.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\ModelSettingsUpdateHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\NumericVariable.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\PagedResponse.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\PropertyTypes.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\PropertyValues.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\QueryExecuteHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\QueryGetAvailabilityHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\QueryGetEventSchemaHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\QueryRequest.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\QueryResultPage.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\SearchHierarchyNodesResponse.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\SearchInstancesHierarchiesParameters.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\SearchInstancesParameters.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\SearchInstancesRequest.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\SearchInstancesResponse.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\SearchInstancesResponsePage.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesAggregateCategory.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesDefaultCategory.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesHierarchiesExecuteBatchHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesHierarchiesListHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesHierarchy.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesHierarchyOrError.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesHierarchySource.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesIdProperty.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesIdPropertyTypes.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesInstance.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesInstancesExecuteBatchHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesInstancesListHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesInstancesSearchHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesInstancesSuggestHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesModelSettings.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesType.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesTypeOrError.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesTypesExecuteBatchHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TimeSeriesTypesListHeaders.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TsiError.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TsiErrorBody.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TsiErrorDetails.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TsiErrorException.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\Tsx.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TypesBatchRequest.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TypesBatchResponse.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\TypesRequestBatchGetOrDelete.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\UpdateModelSettingsRequest.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Models\Variable.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\Query.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\QueryExtensions.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\TimeSeriesHierarchies.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\TimeSeriesHierarchiesExtensions.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\TimeSeriesInsightsClient.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\TimeSeriesInstances.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\TimeSeriesInstancesExtensions.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\TimeSeriesTypes.cs" />
+    <Compile Include="Generated\TimeSeriesInsights\DataPlane.TimeSeriesInsights\Generated\TimeSeriesTypesExtensions.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
