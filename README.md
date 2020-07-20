@@ -17,13 +17,13 @@ These are samples that use the [Azure Time Series Insights](https://azure.micros
 ## Samples
 
 ### TSI Gen2
-* [C# Sample App](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/Gen2-Sample/CSharp-TSI-Gen2-Sample)
+* [C# Sample App](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample)
 
 ### TSI Gen1
 
-* [C# Sample App](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/Gen1-Sample/CSharp-TSI-Gen1-Sample)
-* [C# Sample App using MSAL.NET](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/Gen1-Sample/CSharp-TSI-MSAL-Gen1-Sample)
-* [JavaScript Sample App](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/Gen1-Sample/JavaScript-TSI-Gen1-Sample)
+* [C# Sample App](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen2-sample)
+* [C# Sample App using MSAL.NET](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-msal-gen1-sample)
+* [JavaScript Sample App](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/javascript-tsi-gen1-sample)
 * [JavaScript Hosted Samples](https://tsiclientsample.azurewebsites.net/)
 
 ## Getting Started

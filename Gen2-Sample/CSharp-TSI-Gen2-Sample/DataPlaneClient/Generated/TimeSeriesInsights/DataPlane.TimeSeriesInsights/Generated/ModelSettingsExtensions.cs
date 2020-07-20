@@ -21,8 +21,8 @@ namespace Microsoft.Azure.TimeSeriesInsights
     {
             /// <summary>
             /// Returns the model settings which includes model display name, Time Series
-            /// ID properties and default type ID. Every pay-as-you-go environment has a
-            /// model that is automatically created.
+            /// ID properties and default type ID. Every Gen2 environment has a model that
+            /// is automatically created.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

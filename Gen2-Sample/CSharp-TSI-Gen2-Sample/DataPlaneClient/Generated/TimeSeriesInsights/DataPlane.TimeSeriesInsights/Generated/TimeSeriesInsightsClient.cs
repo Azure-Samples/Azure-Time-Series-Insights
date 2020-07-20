@@ -20,7 +20,7 @@ namespace Microsoft.Azure.TimeSeriesInsights
     using System.Net.Http;
 
     /// <summary>
-    /// Time Series Insights environment data plane client for GA (GA L1 SKU)
+    /// Time Series Insights environment data plane client for Gen2 (GA L1 SKU)
     /// environments.
     /// </summary>
     public partial class TimeSeriesInsightsClient : ServiceClient<TimeSeriesInsightsClient>, ITimeSeriesInsightsClient

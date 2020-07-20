@@ -52,8 +52,8 @@ namespace Microsoft.Azure.TimeSeriesInsights
 
         /// <summary>
         /// Returns the model settings which includes model display name, Time Series
-        /// ID properties and default type ID. Every pay-as-you-go environment has a
-        /// model that is automatically created.
+        /// ID properties and default type ID. Every Gen2 environment has a model that
+        /// is automatically created.
         /// </summary>
         /// <param name='clientRequestId'>
         /// Optional client request ID. Service records this value. Allows the service

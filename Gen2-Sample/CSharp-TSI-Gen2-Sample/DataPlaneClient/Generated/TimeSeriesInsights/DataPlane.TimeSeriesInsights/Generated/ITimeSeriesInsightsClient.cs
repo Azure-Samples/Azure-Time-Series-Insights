@@ -15,7 +15,7 @@ namespace Microsoft.Azure.TimeSeriesInsights
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Time Series Insights environment data plane client for GA (GA L1 SKU)
+    /// Time Series Insights environment data plane client for Gen2 (GA L1 SKU)
     /// environments.
     /// </summary>
     public partial interface ITimeSeriesInsightsClient : System.IDisposable

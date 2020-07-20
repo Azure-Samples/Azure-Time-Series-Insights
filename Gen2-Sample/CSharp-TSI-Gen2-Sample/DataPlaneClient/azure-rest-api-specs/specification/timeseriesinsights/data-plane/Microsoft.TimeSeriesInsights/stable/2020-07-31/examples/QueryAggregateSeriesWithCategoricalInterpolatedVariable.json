@@ -17,7 +17,7 @@
           "Status_String": {
             "kind": "categorical",
             "value": {
-              "tsx": "$event.[Status].String"
+              "tsx": "$event.['Status'].String"
             },
             "interpolation": {
               "kind": "Step",
@@ -55,7 +55,7 @@
           "Status_Long": {
             "kind": "categorical",
             "value": {
-              "tsx": "tolong($event.[Status].Double)"
+              "tsx": "tolong($event.['Status'].Double)"
             },
             "interpolation": {
               "kind": "Step",

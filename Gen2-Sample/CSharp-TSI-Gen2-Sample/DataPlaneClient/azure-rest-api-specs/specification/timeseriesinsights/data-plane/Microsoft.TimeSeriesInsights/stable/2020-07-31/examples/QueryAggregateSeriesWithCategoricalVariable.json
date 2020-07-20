@@ -17,7 +17,7 @@
           "Status_String": {
             "kind": "categorical",
             "value": {
-              "tsx": "$event.[Status].String"
+              "tsx": "$event.['Status'].String"
             },
             "categories": [
               {
@@ -49,7 +49,7 @@
           "Status_Long": {
             "kind": "categorical",
             "value": {
-              "tsx": "tolong($event.[Status].Double)"
+              "tsx": "tolong($event.['Status'].Double)"
             },
             "categories": [
               {
