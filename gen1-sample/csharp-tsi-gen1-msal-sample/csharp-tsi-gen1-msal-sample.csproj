@@ -3,7 +3,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <LangVersion>latest</LangVersion>
-    <RootNamespace>csharp-tsi-msal-ga-sample</RootNamespace>
+    <RootNamespace>csharp-tsi-gen1-msal-sample</RootNamespace>
     <RunWorkingDirectory>$(MSBuildThisFileDirectory)</RunWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>

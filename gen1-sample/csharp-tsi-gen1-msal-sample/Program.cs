@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
-namespace CsharpTsiMsalGaSample
+namespace CsharpTsiGen1MsalSample
 {
     using Microsoft.Identity.Client;
     using Newtonsoft.Json;
@@ -58,7 +58,7 @@ namespace CsharpTsiMsalGaSample
             return result.AccessToken;
         }
 
-        // System.Net.HttpClient helper to wrap HTTP POST made to the GA Reference Data API
+        // System.Net.HttpClient helper to wrap HTTP POST made to the Gen1 Reference Data API
         private static async Task<HttpResponseMessage> AsyncHttpPostRequestHelper(HttpClient httpClient, string input)
         {
              if (EnvironmentFqdn.StartsWith("#PLACEHOLDER#") || EnvironmentReferenceDataSetName == "#PLACEHOLDER#")
@@ -92,7 +92,7 @@ namespace CsharpTsiMsalGaSample
              return null;
         }
 
-        private static async Task TsiMsalGaSample()
+        private static async Task TsiGen1MsalSample()
         {
             Console.WriteLine("Beginning demo...");
             Console.WriteLine("");
@@ -202,7 +202,7 @@ namespace CsharpTsiMsalGaSample
 
         internal static void Main(string[] args)
         {
-            Task.Run(async () => await TsiMsalGaSample()).Wait();
+            Task.Run(async () => await TsiGen1MsalSample()).Wait();
         }
     }
 }

@@ -1,15 +1,15 @@
 
-# TimeSeriesInsights
+# Azure Time Series Insights
 
 > see https://aka.ms/autorest
 
-This is the AutoRest configuration file for Azure Time Series Insights Gen2 GA Data Plane API.
+This is the AutoRest configuration file for Azure Time Series Insights Gen2 Data Plane API.
 
 ---
 
 ## Getting Started
 
-To build the SDK for Azure Time Series Insights Gen2 GA Data Plane API, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
+To build the SDK for Azure Time Series Insights Gen2 Data Plane API, simply [Install AutoRest](https://aka.ms/autorest/install) and in this folder, run:
 
 > `autorest`
 
@@ -22,7 +22,7 @@ To see additional help and options, run:
 
 ### Basic Information
 
-These are the global settings for Azure Time Series Insights Gen2 GA Data Plane API.
+These are the global settings for Azure Time Series Insights Gen2 Data Plane API.
 
 ``` yaml
 openapi-type: data-plane
