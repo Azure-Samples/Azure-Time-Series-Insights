@@ -6,7 +6,7 @@ This C# example demonstrates how to query data from the [Gen2 Data Access APIs](
 
 1. [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - Version 16.4.2+ is recommended (Visual Studio 2015+).
 1. Open the `TSIGen2DataPlaneclient.sln` solution and set `DataPlaneClientSampleApp` as the default project
-1. Run the [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat) as specified in the [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/Gen2-Sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md) to generate the Time Series Insights Gen2 client dependencies.
+1. Run the [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat) as specified in the [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md) to generate the Time Series Insights Gen2 client dependencies.
 1. Compile the example to an executable `.exe` file.
 1. Run the `.exe` file by double-clicking on it.
 
