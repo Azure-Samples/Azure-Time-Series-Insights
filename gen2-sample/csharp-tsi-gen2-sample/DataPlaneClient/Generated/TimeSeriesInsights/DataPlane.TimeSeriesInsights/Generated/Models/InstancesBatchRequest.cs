@@ -36,11 +36,10 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// to return.</param>
         /// <param name="put">Time series instances to be created or
         /// updated.</param>
-        /// <param name="update">Time series instances to be updated onlRequest
-        /// to perform a single operation on a batch of instances. y. If
+        /// <param name="update">Time series instance to be updated. If
         /// instance does not exist, an error is returned.</param>
-        /// <param name="delete">Time series IDs or names of time series
-        /// instances to delete.</param>
+        /// <param name="delete">Time series instances to be deleted. Time
+        /// series ID or name may be specified.</param>
         public InstancesBatchRequest(InstancesRequestBatchGetOrDelete get = default(InstancesRequestBatchGetOrDelete), IList<TimeSeriesInstance> put = default(IList<TimeSeriesInstance>), IList<TimeSeriesInstance> update = default(IList<TimeSeriesInstance>), InstancesRequestBatchGetOrDelete delete = default(InstancesRequestBatchGetOrDelete))
         {
             Get = get;
@@ -69,16 +68,15 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         public IList<TimeSeriesInstance> Put { get; set; }
 
         /// <summary>
-        /// Gets or sets time series instances to be updated onlRequest to
-        /// perform a single operation on a batch of instances. y. If instance
-        /// does not exist, an error is returned.
+        /// Gets or sets time series instance to be updated. If instance does
+        /// not exist, an error is returned.
         /// </summary>
         [JsonProperty(PropertyName = "update")]
         public IList<TimeSeriesInstance> Update { get; set; }
 
         /// <summary>
-        /// Gets or sets time series IDs or names of time series instances to
-        /// delete.
+        /// Gets or sets time series instances to be deleted. Time series ID or
+        /// name may be specified.
         /// </summary>
         [JsonProperty(PropertyName = "delete")]
         public InstancesRequestBatchGetOrDelete Delete { get; set; }
