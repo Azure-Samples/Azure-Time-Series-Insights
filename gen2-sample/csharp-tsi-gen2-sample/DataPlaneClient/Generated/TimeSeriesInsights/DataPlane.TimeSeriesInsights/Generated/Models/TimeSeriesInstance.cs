@@ -50,7 +50,9 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
         /// <param name="hierarchyIds">Set of time series hierarchy IDs that
         /// the instance belong to. May be null.</param>
         /// <param name="instanceFields">Set of key-value pairs that contain
-        /// user-defined instance properties. May be null.</param>
+        /// user-defined instance properties. It may be null. Supported
+        /// property value types are: bool, string, long, double and it cannot
+        /// be nested or null.</param>
         public TimeSeriesInstance(IList<object> timeSeriesId, string typeId, string name = default(string), string description = default(string), IList<string> hierarchyIds = default(IList<string>), IDictionary<string, object> instanceFields = default(IDictionary<string, object>))
         {
             TimeSeriesId = timeSeriesId;
@@ -106,7 +108,8 @@ namespace Microsoft.Azure.TimeSeriesInsights.Models
 
         /// <summary>
         /// Gets or sets set of key-value pairs that contain user-defined
-        /// instance properties. May be null.
+        /// instance properties. It may be null. Supported property value types
+        /// are: bool, string, long, double and it cannot be nested or null.
         /// </summary>
         [JsonProperty(PropertyName = "instanceFields")]
         public IDictionary<string, object> InstanceFields { get; set; }
