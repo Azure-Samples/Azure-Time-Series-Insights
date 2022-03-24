@@ -10,6 +10,13 @@ urlFragment: Azure-Time-Series-Insights
 
 # Azure Time Series Insights Samples
 
+---
+[//]: <> (This content is similar to https://github.com/MicrosoftDocs/azure-docs/edit/main/includes/tsi-retirement.md)
+
+**NOTE**
+>The Time Series Insights (TSI) service will no longer be supported after March 2025. Consider migrating existing TSI environments to alternative solutions as soon as possible. For more information on the deprecation and migration, visit our [documentation](https://aka.ms/tsi2adx).
+---
+
 [![TSI: Gen1](https://img.shields.io/badge/TSI-Gen1-blue.svg)](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-overview) [![TSI: Gen2](https://img.shields.io/badge/TSI-Gen2-blue.svg)](https://docs.microsoft.com/azure/time-series-insights/overview-what-is-tsi) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Contribute](https://img.shields.io/badge/PR%27s-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 These are samples that use the [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) data plane APIs.
