@@ -1051,7 +1051,7 @@
             "description": "Key value pair where key represents the interval denoted by the date time of the start of the interval and the value is the number of events in that interval.",
             "readOnly": true,
             "type": "integer",
-            "format": "int32"
+            "format": "int64"
           }
         }
       }
